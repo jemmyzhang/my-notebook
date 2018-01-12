@@ -1,2 +1,2 @@
 # my-notebook
-Record something may be useful.
+Record something might be useful.
