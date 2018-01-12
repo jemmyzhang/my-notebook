@@ -80,12 +80,17 @@ public class DataProducer {
 
     public static void clear() {
         File dir = new File(OUTPUT_PATH);
-        if (dir.isDirectory()) {
-            String[] list = dir.list();
-            if (list.length != 0) {
-                for (int i = 0; i < list.length; i++) {
-                    delete(new File(dir, list[i]));
-                }
+        if (!dir.exists()) {
+            dir.mkdir();
+        }
+        if (!dir.isDirectory()) {
+            String errMsg = String.format("Target path \"%s\" is not a directory! ", OUTPUT_PATH);
+            throw new UnsupportedOperationException(errMsg);
+        }
+        String[] list = dir.list();
+        if (list.length != 0) {
+            for (int i = 0; i < list.length; i++) {
+                delete(new File(dir, list[i]));
             }
         }
     }
