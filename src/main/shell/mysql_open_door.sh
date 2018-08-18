@@ -9,7 +9,7 @@
 #**********************************************************
 
 ROOT_USER='root'
-PASSWD='1q2w3e'
+PASSWD='root'
 LOGIN='_horizon'
 OPEN='open'
 CLOSE='close'
