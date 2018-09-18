@@ -5,7 +5,7 @@
 # Email         : jemmyzhangcn@foxmail.com
 # Last modified : 2018-08-18 23:20
 # Filename      : mysql_open_door
-# Description   : designed for ubuntu 12.04 and mysql 5.5
+# Description   : tested OK in ubuntu 12.04 and mysql 5.5
 #**********************************************************
 
 ROOT_USER='root'
