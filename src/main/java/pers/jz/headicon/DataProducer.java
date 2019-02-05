@@ -1,4 +1,4 @@
-package per.jz.headicon;
+package pers.jz.headicon;
 
 import com.google.gson.Gson;
 
