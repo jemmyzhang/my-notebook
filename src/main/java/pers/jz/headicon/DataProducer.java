@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * @author jemmyzhang on 2018/1/10.
+ * @author Jemmy Zhang on 2018/1/10.
  */
 public class DataProducer {
     public static final String OUTPUT_PATH = "out/";
