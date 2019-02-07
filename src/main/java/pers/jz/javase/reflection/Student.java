@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * @author Jemmy Zhang on 2019/2/7.
  */
-public class Student {
+public class Student implements BaseEntity {
     private String uuid;
     private String name;
     private Integer sex;

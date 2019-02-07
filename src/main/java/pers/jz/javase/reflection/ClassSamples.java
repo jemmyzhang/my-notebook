@@ -65,11 +65,20 @@ public class ClassSamples {
         stdout("Declared fields: ", declaredFields);
         stdout();
 
+        //baseId是从接口里继承下来的。
         try {
-            stdout("Get Declared Field [name]: ", studentClass.getDeclaredField("name"));
+            stdout("Get parent field [baseId]: ", studentClass.getField("baseId"));
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
+
+        //私有属性
+        try {
+            stdout("Get declared field [name]: ", studentClass.getDeclaredField("name"));
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
