@@ -1,9 +1,8 @@
 package pers.jz.javase.reflection;
 
-import org.apache.commons.lang3.StringUtils;
-
-import java.lang.reflect.Array;
 import java.lang.reflect.Field;
+
+import static pers.jz.javase.utils.CommonUtil.stdout;
 
 /**
  * @author Jemmy Zhang on 2019/2/7.
@@ -86,40 +85,6 @@ public class ClassSamples {
 
     }
 
-    public static void stdout(){
-        System.out.println();
-    }
-
-    public static void stdout(Object obj) {
-        stdout("", obj);
-    }
-
-    public static void stdout(String prefix, Object obj) {
-        if (StringUtils.isNotEmpty(prefix)) {
-            System.out.print(prefix);
-        }
-        stdout(obj, false);
-    }
-
-    private static void stdout(Object obj, boolean isArrayItem) {
-        if (obj != null && obj.getClass().isArray()) {
-            int length = Array.getLength(obj);
-            System.out.print("[ ");
-            for (int i = 0; i < length; i++) {
-                stdout(Array.get(obj, i), true);
-                if (i != length - 1) {
-                    stdout(", ", true);
-                }
-            }
-            System.out.println(" ]");
-        } else {
-            if (isArrayItem) {
-                System.out.print(obj);
-            } else {
-                System.out.println(obj);
-            }
-        }
-    }
 
     public static void main(String[] args) {
         //findClasses();
