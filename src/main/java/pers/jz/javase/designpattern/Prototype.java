@@ -3,6 +3,7 @@ package pers.jz.javase.designpattern;
 import java.io.*;
 
 /**
+ * 原型模式
  * @author Jemmy Zhang on 2019/2/8.
  */
 public class Prototype {

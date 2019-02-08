@@ -14,7 +14,7 @@ public class ClassSamples {
     }
 
     /**
-     * 获取Class对象
+     * 获取Class对象的方式：1、通过class属性。2、通过对象的getClass方法。
      */
     public static void findClasses() {
         stdout(String.class);
@@ -56,8 +56,8 @@ public class ClassSamples {
         stdout(twoDimClass.getPackage());
         stdout();
 
-        Student student = new Student();
-        Class<? extends Student> studentClass = student.getClass();
+        StudentEntity studentEntity = new StudentEntity();
+        Class<? extends StudentEntity> studentClass = studentEntity.getClass();
         Field[] fields = studentClass.getFields();
         stdout("Fields: ", fields);
         Field[] declaredFields = studentClass.getDeclaredFields();
