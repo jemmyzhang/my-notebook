@@ -30,10 +30,16 @@ public class Prototype {
         }
     }
 
-    static class CustomType implements Cloneable, Serializable {
+    interface ProtoInterface {
+        void action();
+    }
+
+    static class CustomType implements ProtoInterface, Cloneable, Serializable {
 
         private static final long serialVersionUID = -887498875327179441L;
         private boolean deepCopy = false;
+        private User user = new User();
+
 
         public User getUser() {
             return user;
@@ -42,8 +48,6 @@ public class Prototype {
         public void setUser(User user) {
             this.user = user;
         }
-
-        private User user = new User();
 
         public CustomType() {
             System.out.println("具体原型创建成功");
@@ -71,21 +75,24 @@ public class Prototype {
             }
             return super.clone();
         }
+
+        @Override
+        public void action() {
+            System.out.println("Do some action.");
+        }
     }
 
-    private static void cloneTest() throws CloneNotSupportedException {
+    public static void main(String[] args) throws CloneNotSupportedException {
         CustomType shallow = new CustomType();
         CustomType shallowCopy = (CustomType) shallow.clone();
         shallowCopy.getUser().setAge(20);
         System.out.println(shallow.getUser().getAge());
+        shallowCopy.action();
 
         CustomType deep = new CustomType(true);
         CustomType deepCopy = (CustomType) deep.clone();
         deepCopy.getUser().setAge(20);
         System.out.println(deep.getUser().getAge());
-    }
-
-    public static void main(String[] args) throws CloneNotSupportedException {
-
+        deepCopy.action();
     }
 }
