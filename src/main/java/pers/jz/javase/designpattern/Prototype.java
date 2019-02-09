@@ -79,7 +79,7 @@ public class Prototype {
 
         @Override
         public void action() {
-            System.out.println("Do some action.");
+            System.out.println("Do some specificRequest.");
         }
     }
 

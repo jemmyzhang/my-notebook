@@ -7,11 +7,11 @@ package pers.jz.javase.designpattern;
  */
 public class FactoryMethod {
 
-    static interface AbstractFactory {
+    interface AbstractFactory {
         Product createProduct();
     }
 
-    static interface Product {
+    interface Product {
         void show();
     }
 

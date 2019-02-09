@@ -1,5 +1,7 @@
 package pers.jz.javase.designpattern;
 
+import sun.nio.ch.AbstractPollArrayWrapper;
+
 /**
  * @author Jemmy Zhang on 2019/2/9.
  */
@@ -53,5 +55,34 @@ public class Builder {
         public abstract void buildPartA();
         public abstract void buildPartB();
         public abstract void buildPartC();
+        public Product build(){
+            return product;
+        }
+    }
+
+    static class ConcreteBuilder extends AbstractBuilder{
+
+        @Override
+        public void buildPartA() {
+            product.setPartA("add partA");
+        }
+
+        @Override
+        public void buildPartB() {
+            product.setPartB("add partB");
+        }
+
+        @Override
+        public void buildPartC() {
+            product.setPartC("add partC");
+        }
+    }
+
+    public static void main(String[] args) {
+        AbstractBuilder builder=new ConcreteBuilder();
+        builder.buildPartA();
+        builder.buildPartB();
+        Product build = builder.build();
+        System.out.println(build);
     }
 }
