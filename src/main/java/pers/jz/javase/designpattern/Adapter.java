@@ -10,7 +10,7 @@ public class Adapter {
     /**
      * 目标接口，可以被客户使用。
      */
-    static interface Target {
+    interface Target {
         void request();
     }
 
