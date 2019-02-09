@@ -27,6 +27,26 @@ public class Bridge {
         }
     }
 
+    static class Yellow implements Color {
+
+        YellowPrinter yellowPrinter;
+
+        public Yellow(YellowPrinter yellowPrinter) {
+            this.yellowPrinter = yellowPrinter;
+        }
+
+        @Override
+        public String getColor() {
+            return yellowPrinter.yellowPrinter();
+        }
+    }
+
+    static class YellowPrinter {
+        String yellowPrinter() {
+            return "Yellow";
+        }
+    }
+
     static abstract class AbstractBridge {
         Color color;
 
@@ -67,7 +87,10 @@ public class Bridge {
 
     public static void main(String[] args) {
         Color blue = new Blue();
-        AbstractBridge bridge = new ArchBridge(blue);
-        bridge.printBridge();
+        AbstractBridge bridge1 = new ArchBridge(blue);
+        bridge1.printBridge();
+        Color yellow = new Yellow(new YellowPrinter());
+        AbstractBridge bridge2 = new ArchBridge(yellow);
+        bridge2.printBridge();
     }
 }
