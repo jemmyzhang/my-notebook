@@ -10,14 +10,6 @@ public class DifferentLocker {
 
     public static final int DEFAULT_SLEEP_TIME = 2;
 
-    private static void sleepSeconds(int second) {
-        try {
-            Thread.sleep(1000L * second);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
     static class InnerClass {
         public static void testLockerA() {
             synchronized (LockerA.class) {
@@ -41,6 +33,14 @@ public class DifferentLocker {
         synchronized (LockerA.class){
             System.out.println("This is the testLockerA. Thread: " + Thread.currentThread().getName());
             DifferentLocker.sleepSeconds(DEFAULT_SLEEP_TIME);
+        }
+    }
+
+    private static void sleepSeconds(int second) {
+        try {
+            Thread.sleep(1000L * second);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
