@@ -1,6 +1,7 @@
 package pers.jz.javase.designpattern;
 
 /**
+ * 备忘录模式
  * @author Jemmy Zhang on 2019/2/13.
  */
 public class Memento {
