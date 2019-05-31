@@ -3,6 +3,7 @@ package pers.jz.totp;
 import javax.sound.midi.Soundbank;
 import java.lang.reflect.GenericArrayType;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * 基于TOTP算法实现的Server端动态令牌
@@ -30,17 +31,24 @@ public class TOTPAuthenticator {
         long timeValid = (internalSeconds * SECONDS_IN_MILLS);
         //System.out.println(Long.toBinaryString(timeValid));
         long timeMask = 0;
-        while (timeValid != 0L) {
+        long flag = timeValid;
+        while (flag != 0L) {
             timeMask = timeMask << 1 | 1;
-            timeValid = timeValid >> 1;
+            flag = flag >> 1;
         }
-        currentTimeInMills = currentTimeInMills | timeMask;
-        System.out.println(currentTimeInMills);
+        System.out.println(~timeMask);
+        System.out.println(Long.toBinaryString(timeValid));
+        System.out.println(Long.toBinaryString(currentTimeInMills & ~timeMask));
+        currentTimeInMills = ((currentTimeInMills & ~timeMask) | timeValid);
+        System.out.println(Long.toBinaryString(currentTimeInMills));
+        System.out.println("Standard time1: " + " " + new Date((currentTimeInMills & ~timeMask)));
+        System.out.println("Standard time2: " + " " + new Date(currentTimeInMills));
+        System.out.println(currentTimeInMills + " " + new Date());
         return null;
     }
 
     public static void main(String[] args) {
-        TOTPAuthenticator authenticator = new TOTPAuthenticator("hello", 60);
+        TOTPAuthenticator authenticator = new TOTPAuthenticator("hello", 30);
         while (true) {
             try {
                 Thread.sleep(1000L);
