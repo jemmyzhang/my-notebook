@@ -75,7 +75,7 @@ public class Reactor implements Runnable {
         static final int READING = 0, SENDING = 1;
         int state = READING;
 
-        Handler(Selector selector, SocketChannel socketChannel) throws IOException {
+        public Handler(Selector selector, SocketChannel socketChannel) throws IOException {
             this.socketChannel = socketChannel;
             this.selectionKey = socketChannel.register(selector, 0);
             selectionKey.attach(this);
@@ -96,21 +96,43 @@ public class Reactor implements Runnable {
             }
         }
 
-        void send() throws IOException {
-            socketChannel.read(input);
-            selectionKey.attach(new Sender());
-        }
-
         void read() throws IOException {
+            socketChannel.read(input);
+            if (inputIsComplete()) {
+                state = SENDING;
+                selectionKey.interestOps(SelectionKey.OP_WRITE);
+            }
 
         }
-    }
 
-    class Sender implements Runnable{
+        void send() throws IOException {
+            socketChannel.write(output);
+            if (outputIsComplete()) {
 
-        @Override
-        public void run() {
+            }
+        }
+
+        private boolean outputIsComplete() {
+            return true;
+        }
+
+        private boolean inputIsComplete() {
+            return true;
+        }
+
+        class Sender implements Runnable {
+
+            @Override
+            public void run() {
+                try {
+                    socketChannel.write(output);
+                    if (outputIsComplete()) {
+                        selectionKey.cancel();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
-
 }
