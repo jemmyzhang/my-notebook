@@ -1,10 +1,9 @@
 package pers.jz.netty.example.restaurant.common.keepalive;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import pers.jz.netty.example.restaurant.common.AbstractOperation;
-import pers.jz.netty.example.restaurant.common.AbstractOperationResult;
+import pers.jz.netty.example.restaurant.common.Operation;
+import pers.jz.netty.example.restaurant.common.OperationResult;
 
 /**
  * @author Jemmy Zhang on 2020/1/1.
@@ -12,7 +11,7 @@ import pers.jz.netty.example.restaurant.common.AbstractOperationResult;
 
 @Data
 @Slf4j
-public class KeepAliveOperation extends AbstractOperation {
+public class KeepAliveOperation extends Operation {
     private long time;
 
     public KeepAliveOperation() {
@@ -20,7 +19,7 @@ public class KeepAliveOperation extends AbstractOperation {
     }
 
     @Override
-    public AbstractOperationResult execute() {
+    public OperationResult execute() {
         KeepAliveOperationResult keepResponse =new KeepAliveOperationResult(time);
         return keepResponse;
     }

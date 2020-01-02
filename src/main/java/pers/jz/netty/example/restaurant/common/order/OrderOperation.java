@@ -2,7 +2,7 @@ package pers.jz.netty.example.restaurant.common.order;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import pers.jz.netty.example.restaurant.common.AbstractOperation;
+import pers.jz.netty.example.restaurant.common.Operation;
 
 /**
  * @author Jemmy Zhang on 2020/1/1.
@@ -10,7 +10,7 @@ import pers.jz.netty.example.restaurant.common.AbstractOperation;
 
 @Data
 @AllArgsConstructor
-public class OrderOperation extends AbstractOperation {
+public class OrderOperation extends Operation {
     private int tableId;
     private String dish;
 

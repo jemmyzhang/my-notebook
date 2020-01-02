@@ -11,7 +11,7 @@ import java.nio.charset.Charset;
  */
 
 @Data
-public abstract class AbstractMessage<T extends AbstractMessageBody> {
+public abstract class Message<T extends MessageBody> {
 
     private MessageHeader messageHeader;
     private T messageBody;
