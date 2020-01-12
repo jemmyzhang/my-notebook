@@ -7,6 +7,8 @@ import lombok.Data;
 import java.nio.charset.Charset;
 
 /**
+ * 消息抽象类
+ *
  * @author Jemmy Zhang on 2020/1/1.
  */
 

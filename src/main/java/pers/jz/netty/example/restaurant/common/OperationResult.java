@@ -1,8 +1,8 @@
 package pers.jz.netty.example.restaurant.common;
 
-import lombok.Data;
-
 /**
+ * 操作结果抽象类
+ *
  * @author Jemmy Zhang on 2020/1/1.
  */
 

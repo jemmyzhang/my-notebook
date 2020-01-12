@@ -1,6 +1,8 @@
 package pers.jz.netty.example.restaurant.common;
 
 /**
+ * 请求消息抽象类
+ *
  * @author Jemmy Zhang on 2020/1/2.
  */
 public class CommonRequestMessage extends Message<Operation> {

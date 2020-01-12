@@ -12,6 +12,8 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 /**
+ * 操作类型枚举
+ *
  * @author Jemmy Zhang on 2020/1/1.
  */
 @Getter
