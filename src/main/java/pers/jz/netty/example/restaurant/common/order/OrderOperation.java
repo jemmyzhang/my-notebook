@@ -20,6 +20,9 @@ public class OrderOperation extends Operation {
         System.out.println("order's executing startup with orderRequest: " + toString());
         System.out.println("order's executing complete");
         OrderOperationResult orderResponse = new OrderOperationResult();
+        orderResponse.setTableId(tableId);
+        orderResponse.setDish(dish);
+        orderResponse.setComplete(true);
         return orderResponse;
     }
 }

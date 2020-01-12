@@ -5,7 +5,6 @@ import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.ServerSocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.logging.LogLevel;
@@ -25,16 +24,17 @@ public class RestaurantServer {
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         ServerBootstrap serverBootstrap = new ServerBootstrap();
         serverBootstrap.channel(NioServerSocketChannel.class);
-        serverBootstrap.group(new NioEventLoopGroup(), new NioEventLoopGroup());
         serverBootstrap.handler(new LoggingHandler(LogLevel.INFO));
+        serverBootstrap.group(new NioEventLoopGroup(), new NioEventLoopGroup());
         serverBootstrap.childHandler(new ChannelInitializer<NioSocketChannel>() {
             @Override
             protected void initChannel(NioSocketChannel ch) throws Exception {
                 ChannelPipeline pipeline = ch.pipeline();
                 pipeline.addLast(new OrderFrameDecoder());
                 pipeline.addLast(new OrderFrameEncoder());
-                pipeline.addLast(new OrderProtocolEncoder());
                 pipeline.addLast(new OrderProtocolDecoder());
+                pipeline.addLast(new OrderProtocolEncoder());
+                pipeline.addLast(new LoggingHandler(LogLevel.INFO));
                 pipeline.addLast(new OrderServerProcessHandler());
 
             }
